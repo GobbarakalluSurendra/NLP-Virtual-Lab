@@ -1,0 +1,65 @@
+.morph-container {
+  min-height: 100vh;
+  padding: 40px;
+  background: linear-gradient(135deg, #eef2f7, #f8f9fc);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.card-container {
+  display: flex;
+  gap: 30px;
+}
+
+.card {
+  flex: 1;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.primary-btn {
+  padding: 10px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(90deg, #5f72be, #9b23ea);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  padding: 10px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(90deg, #4facfe, #f093fb);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
+}
