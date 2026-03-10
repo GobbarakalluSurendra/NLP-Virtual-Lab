@@ -1,13 +1,19 @@
-# word_analysis - routes.py
 from fastapi import APIRouter
-from pydantic import BaseModel
-from .data import analyze_text
+from .logic import get_words, get_features
 
 router = APIRouter()
 
-class TextInput(BaseModel):
-    text: str
+@router.get("/words")
+def words():
+    return {"words": get_words()}
 
-@router.post("/analyze")
-def analyze(input: TextInput):
-    return analyze_text(input.text)
+
+@router.get("/features/{word}")
+def features(word: str):
+
+    result = get_features(word)
+
+    if result:
+        return {"features": result}
+
+    return {"error": "Word not found"}

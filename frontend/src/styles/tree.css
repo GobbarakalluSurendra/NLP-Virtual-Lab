@@ -1,0 +1,66 @@
+.tree-container{
+  margin-top:40px;
+  text-align:center;
+}
+
+/* tree layout */
+.tree{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* word node */
+.node{
+  padding:12px 26px;
+  border-radius:14px;
+  font-size:20px;
+  font-weight:600;
+}
+
+.result{
+  background:#4c6ef5;
+  color:white;
+}
+
+/* vertical connector */
+.vertical-line{
+  width:2px;
+  height:40px;
+  background:#888;
+}
+
+/* horizontal connector */
+.horizontal-line{
+  width:220px;
+  height:2px;
+  background:#888;
+}
+
+/* children container */
+.tree-children{
+  display:flex;
+  justify-content:space-between;
+  width:260px;
+  margin-top:10px;
+}
+
+/* nodes */
+.root{
+  background:#74c0fc;
+}
+
+.suffix{
+  background:#f783ac;
+}
+
+.child{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.child span{
+  margin-top:6px;
+  font-size:14px;
+}

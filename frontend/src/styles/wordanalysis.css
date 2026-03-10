@@ -1,0 +1,79 @@
+.analysis-container{
+  padding:20px;
+}
+
+.instructions{
+  background:linear-gradient(90deg,#59c3c3,#4c6ef5);
+  color:white;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:25px;
+}
+
+.analysis-grid{
+  display:grid;
+  grid-template-columns:1fr 1.2fr 1fr;
+  gap:25px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.features-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+}
+
+label{
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+input,select{
+  padding:8px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+.btn{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.primary{
+  background:linear-gradient(90deg,#4c6ef5,#5f72be);
+  color:white;
+}
+
+.secondary{
+  background:linear-gradient(90deg,#4facfe,#f093fb);
+  color:white;
+}
+
+.reset{
+  background:#ff6b6b;
+  color:white;
+}
+
+.answer-box{
+  margin-top:15px;
+  background:#f1fff5;
+  border:2px solid #40c057;
+  padding:10px;
+  border-radius:10px;
+}

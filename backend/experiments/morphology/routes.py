@@ -1,21 +1,25 @@
-from flask import Blueprint, request, jsonify
-from .logic import analyze_word
+from fastapi import APIRouter
+from .data import WORDS
 
-morphology_bp = Blueprint("morphology", __name__)
+router = APIRouter()
 
-@morphology_bp.route("/morphology", methods=["POST"])
-def morphology():
-    data = request.json
 
-    language = data.get("language")
-    word = data.get("word")
-    category = data.get("category")
-    tense = data.get("tense")
-    number = data.get("number")
+# Get all words
+@router.get("/words")
+def get_words():
+    return {"words": WORDS}
 
-    result = analyze_word(language, word, category, tense, number)
 
-    return jsonify({
-        "message": "Processed Successfully",
-        "correct": result
-    })
+# Get rule for a specific word
+@router.get("/rule/{word}")
+def get_rule(word: str):
+
+    if word in WORDS:
+        return {
+            "word": word,
+            "rule": WORDS[word]
+        }
+
+    return {
+        "error": "Word not found"
+    }

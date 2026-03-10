@@ -1,0 +1,206 @@
+.pos-tagging-container {
+    font-family: 'Inter', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #333;
+}
+
+.instructions-panel {
+    background: #f4f7fb;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.instructions-header {
+    background: linear-gradient(90deg, #56e2dc, #4b89f8);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+}
+
+.instructions-content {
+    padding: 20px;
+    background-color: #f8f9fc;
+}
+
+.instructions-content ul {
+    padding-left: 20px;
+    line-height: 1.8;
+    margin: 0;
+    color: #4a5568;
+}
+
+.main-content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.left-panel {
+    width: 250px;
+    flex-shrink: 0;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.left-panel-title {
+    font-weight: bold;
+    color: #4b4ef8;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.corpus-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 25px;
+    background: #f8fafc;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+}
+
+.sentence-display {
+    background: #f0f4ff;
+    border: 1px solid #c7d2fe;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #334155;
+}
+
+.right-panel {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% - 290px);
+}
+
+.primary-btn {
+    background: linear-gradient(90deg, #4b4ef8, #56e2dc);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: opacity 0.2s;
+    box-shadow: 0 4px 6px rgba(75, 78, 248, 0.2);
+}
+
+.primary-btn:hover {
+    opacity: 0.9;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 30px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+}
+
+.table-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4b4ef8;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.table-subtitle {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #3b0764;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.probabilities-table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.probabilities-table th,
+.probabilities-table td {
+    border: 1px solid #e2e8f0;
+    padding: 10px 8px;
+    color: #333;
+    font-size: 13px;
+}
+
+.probabilities-table th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #475569;
+}
+
+.probabilities-table td:first-child {
+    font-weight: 600;
+    background-color: #f1f5f9;
+    color: #334155;
+}
+
+.prob-input {
+    width: 50px;
+    padding: 8px 4px;
+    text-align: center;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.prob-input:focus {
+    border-color: #4b4ef8;
+    box-shadow: 0 0 0 2px rgba(75, 78, 248, 0.1);
+}
+
+.prob-input.correct {
+    border-color: #10b981;
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.prob-input.incorrect {
+    border-color: #ef4444;
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin: 20px auto 30px;
+    justify-content: center;
+    width: 100%;
+}
+
+.action-buttons .primary-btn {
+    margin-bottom: 0;
+}
