@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api/axiosConfig";
 import "../styles/ngrams_smoothing.css";
 
 const NgramsSmoothing = () => {
@@ -23,7 +23,7 @@ const NgramsSmoothing = () => {
     useEffect(() => {
         const fetchCorpus = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/ngrams/corpus");
+                const res = await api.get("/ngrams/corpus");
                 setCorpus(res.data.corpus);
                 setVocab(res.data.vocab.filter(v => v !== "(eos)")); // Removing EOS for visual simplicity matching screenshot
             } catch (err) {
@@ -35,7 +35,7 @@ const NgramsSmoothing = () => {
 
     const fetchProbs = async () => {
         try {
-            const res = await axios.get(`http://127.0.0.1:8000/ngrams/probabilities/2?smooth=true`);
+            const res = await api.get(`/ngrams/probabilities/2?smooth=true`);
             setProbabilities(res.data.probabilities);
 
             // Filter out EOS histories for UI match with screenshot

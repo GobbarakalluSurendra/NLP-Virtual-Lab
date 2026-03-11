@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api/axiosConfig";
 import "../styles/wordanalysis.css";
 
 const WordAnalysis = () => {
@@ -23,8 +23,8 @@ const WordAnalysis = () => {
   // Load words from backend
   useEffect(() => {
 
-    axios
-      .get("http://127.0.0.1:8000/word-analysis/words")
+    api
+      .get("/word-analysis/words")
       .then((res) => {
         setWordList(res.data.words);
       })
@@ -40,8 +40,8 @@ const WordAnalysis = () => {
 
     try {
 
-      const res = await axios.get(
-        `http://127.0.0.1:8000/word-analysis/features/${word}`
+      const res = await api.get(
+        `/word-analysis/features/${word}`
       );
 
       const data = res.data.features;
@@ -79,8 +79,8 @@ const WordAnalysis = () => {
       return;
     }
 
-    const res = await axios.get(
-      `http://127.0.0.1:8000/word-analysis/features/${selectedWord}`
+    const res = await api.get(
+      `/word-analysis/features/${selectedWord}`
     );
 
     const correct = res.data.features;
@@ -107,8 +107,8 @@ const WordAnalysis = () => {
 
     if (!selectedWord) return;
 
-    const res = await axios.get(
-      `http://127.0.0.1:8000/word-analysis/features/${selectedWord}`
+    const res = await api.get(
+      `/word-analysis/features/${selectedWord}`
     );
 
     setAnswer(res.data.features);

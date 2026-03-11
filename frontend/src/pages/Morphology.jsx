@@ -1,60 +1,60 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api/axiosConfig";
 import "../styles/morphology.css";
 import MorphologyTree from "../components/MorphologyTree";
 
 const Morphology = () => {
 
-  const [words,setWords] = useState({});
-  const [rootWord,setRootWord] = useState("");
+  const [words, setWords] = useState({});
+  const [rootWord, setRootWord] = useState("");
 
-  const [tableData,setTableData] = useState([
-    {delete:"None",add:"None",number:"Singular",case:"Direct"},
-    {delete:"None",add:"None",number:"Singular",case:"Oblique"},
-    {delete:"None",add:"None",number:"Plural",case:"Direct"},
-    {delete:"None",add:"None",number:"Plural",case:"Oblique"}
+  const [tableData, setTableData] = useState([
+    { delete: "None", add: "None", number: "Singular", case: "Direct" },
+    { delete: "None", add: "None", number: "Singular", case: "Oblique" },
+    { delete: "None", add: "None", number: "Plural", case: "Direct" },
+    { delete: "None", add: "None", number: "Plural", case: "Oblique" }
   ]);
 
-  const [showAnswer,setShowAnswer] = useState(false);
+  const [showAnswer, setShowAnswer] = useState(false);
 
   /* ---------- FETCH WORDS ---------- */
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    axios.get("http://127.0.0.1:8000/morphology/words")
-      .then(res=>{
+    api.get("/morphology/words")
+      .then(res => {
         setWords(res.data.words);
         const firstWord = Object.keys(res.data.words)[0];
         setRootWord(firstWord);
       })
-      .catch(err=>{
+      .catch(err => {
         console.log(err);
       });
 
-  },[]);
+  }, []);
 
   /* ---------- HANDLE CHANGE ---------- */
 
-  const handleChange=(index,field,value)=>{
+  const handleChange = (index, field, value) => {
 
-    const newData=[...tableData];
-    newData[index][field]=value;
+    const newData = [...tableData];
+    newData[index][field] = value;
     setTableData(newData);
 
   };
 
   /* ---------- GENERATE WORD ---------- */
 
-  const generateWord=(root,del,add)=>{
+  const generateWord = (root, del, add) => {
 
-    let base=root;
+    let base = root;
 
-    if(del!=="None"){
-      base=root.slice(0,root.length-del.length);
+    if (del !== "None") {
+      base = root.slice(0, root.length - del.length);
     }
 
-    if(add!=="None"){
-      base=base+add;
+    if (add !== "None") {
+      base = base + add;
     }
 
     return base;
@@ -63,24 +63,24 @@ const Morphology = () => {
 
   /* ---------- SUBMIT ---------- */
 
-  const handleSubmit=()=>{
+  const handleSubmit = () => {
 
     const rule = words[rootWord];
 
     const correctTable = [
-      {delete:"None",add:"None",number:"Singular",case:"Direct"},
-      {delete:"None",add:"None",number:"Singular",case:"Oblique"},
-      {delete:rule.delete,add:rule.add,number:"Plural",case:"Direct"},
-      {delete:rule.delete,add:rule.add,number:"Plural",case:"Oblique"}
+      { delete: "None", add: "None", number: "Singular", case: "Direct" },
+      { delete: "None", add: "None", number: "Singular", case: "Oblique" },
+      { delete: rule.delete, add: rule.add, number: "Plural", case: "Direct" },
+      { delete: rule.delete, add: rule.add, number: "Plural", case: "Oblique" }
     ];
 
     const correct =
       JSON.stringify(tableData) === JSON.stringify(correctTable);
 
-    if(correct){
+    if (correct) {
       alert("✅ Correct Answer");
     }
-    else{
+    else {
       alert("❌ Incorrect Answer");
     }
 
@@ -88,29 +88,29 @@ const Morphology = () => {
 
   /* ---------- RESET ---------- */
 
-  const handleReset=()=>{
+  const handleReset = () => {
 
     setShowAnswer(false);
 
     setTableData([
-      {delete:"None",add:"None",number:"Singular",case:"Direct"},
-      {delete:"None",add:"None",number:"Singular",case:"Oblique"},
-      {delete:"None",add:"None",number:"Plural",case:"Direct"},
-      {delete:"None",add:"None",number:"Plural",case:"Oblique"}
+      { delete: "None", add: "None", number: "Singular", case: "Direct" },
+      { delete: "None", add: "None", number: "Singular", case: "Oblique" },
+      { delete: "None", add: "None", number: "Plural", case: "Direct" },
+      { delete: "None", add: "None", number: "Plural", case: "Oblique" }
     ]);
 
   };
 
-  const rule = words[rootWord] || {delete:"None",add:"s"};
+  const rule = words[rootWord] || { delete: "None", add: "s" };
 
-  const pluralWord = generateWord(rootWord,rule.delete,rule.add);
+  const pluralWord = generateWord(rootWord, rule.delete, rule.add);
 
   const rootAfterDelete =
-    rule.delete==="None"
+    rule.delete === "None"
       ? rootWord
-      : rootWord.slice(0,rootWord.length-rule.delete.length);
+      : rootWord.slice(0, rootWord.length - rule.delete.length);
 
-  return(
+  return (
 
     <div className="morph-container">
 
@@ -128,14 +128,14 @@ const Morphology = () => {
 
           <select
             value={rootWord}
-            onChange={(e)=>setRootWord(e.target.value)}
+            onChange={(e) => setRootWord(e.target.value)}
           >
 
-          {Object.keys(words).map((word)=>(
-            <option key={word} value={word}>
-              {word}
-            </option>
-          ))}
+            {Object.keys(words).map((word) => (
+              <option key={word} value={word}>
+                {word}
+              </option>
+            ))}
 
           </select>
 
@@ -185,38 +185,38 @@ const Morphology = () => {
 
             <tbody>
 
-            {tableData.map((row,index)=>(
-              <tr key={index}>
+              {tableData.map((row, index) => (
+                <tr key={index}>
 
-                <td>
-                  <select
-                    value={row.delete}
-                    onChange={(e)=>handleChange(index,"delete",e.target.value)}
-                  >
-                    <option>None</option>
-                    <option>y</option>
-                    <option>f</option>
-                  </select>
-                </td>
+                  <td>
+                    <select
+                      value={row.delete}
+                      onChange={(e) => handleChange(index, "delete", e.target.value)}
+                    >
+                      <option>None</option>
+                      <option>y</option>
+                      <option>f</option>
+                    </select>
+                  </td>
 
-                <td>
-                  <select
-                    value={row.add}
-                    onChange={(e)=>handleChange(index,"add",e.target.value)}
-                  >
-                    <option>None</option>
-                    <option>s</option>
-                    <option>es</option>
-                    <option>ies</option>
-                    <option>ves</option>
-                  </select>
-                </td>
+                  <td>
+                    <select
+                      value={row.add}
+                      onChange={(e) => handleChange(index, "add", e.target.value)}
+                    >
+                      <option>None</option>
+                      <option>s</option>
+                      <option>es</option>
+                      <option>ies</option>
+                      <option>ves</option>
+                    </select>
+                  </td>
 
-                <td>{row.number}</td>
-                <td>{row.case}</td>
+                  <td>{row.number}</td>
+                  <td>{row.case}</td>
 
-              </tr>
-            ))}
+                </tr>
+              ))}
 
             </tbody>
 
@@ -237,7 +237,7 @@ const Morphology = () => {
 
           <button
             className="btn answer"
-            onClick={()=>setShowAnswer(true)}
+            onClick={() => setShowAnswer(true)}
           >
             Get Answer
           </button>

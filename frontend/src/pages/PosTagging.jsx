@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api/axiosConfig";
 import "../styles/pos_tagging.css";
 
 const PosTagging = () => {
@@ -20,7 +20,7 @@ const PosTagging = () => {
     useEffect(() => {
         const fetchCorpora = async () => {
             try {
-                const res = await axios.get("http://127.0.0.1:8000/pos-tagging/corpora");
+                const res = await api.get("/pos-tagging/corpora");
                 setCorpora(res.data);
             } catch (err) {
                 console.error("Error fetching corpora:", err);
@@ -32,7 +32,7 @@ const PosTagging = () => {
     useEffect(() => {
         const fetchMatrices = async () => {
             try {
-                const res = await axios.get(`http://127.0.0.1:8000/pos-tagging/matrices/${selectedCorpusId}`);
+                const res = await api.get(`/pos-tagging/matrices/${selectedCorpusId}`);
                 const data = res.data;
                 setMatricesData(data);
 
