@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 
 import Sidebar from "./components/Sidebar";
@@ -38,6 +38,9 @@ function App() {
           )}
 
           <Routes>
+
+            {/* Default Route */}
+            <Route path="/" element={<Navigate to="/morphology" replace />} />
 
             <Route path="/morphology" element={<Morphology />} />
 
