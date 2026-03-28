@@ -1,4 +1,8 @@
 # NLP Virtual Lab
+
+🌐 Live Demo:
+https://nlp-virtual-lab1.vercel.app/
+
 ## Features
 - **Real-time Processing**: Fast text analysis using state-of-the-art NLP models.
 - **Interactive UI**: User-friendly dashboard for experimenting with tokenization, Named Entity Recognition (NER), and sentiment analysis.
